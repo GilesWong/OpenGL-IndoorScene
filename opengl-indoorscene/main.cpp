@@ -71,9 +71,6 @@ void init()
     
     glEnable(GL_LIGHTING);
     glEnable(GL_DEPTH_TEST);
-    //glEnable(GL_LIGHT0);
-    //glEnable(GL_LIGHT1);
-    
     
 }
 
@@ -81,27 +78,30 @@ void init()
 void SpecialKeys(int key, int x, int y)
 {
     if(key == GLUT_KEY_UP)
-    {   sy-= 5.50f;
+    {
+        sy-= 5.50f;
         glutPostRedisplay();
     }
     if(key == GLUT_KEY_DOWN)
-    {   sy += 5.50f;
+    {
+        sy += 5.50f;
         glutPostRedisplay();
     }
     if(key == GLUT_KEY_LEFT)
-    {  sx -= 0.50f;
+    {
+        sx -= 0.50f;
         glutPostRedisplay();
     }
     if(key == GLUT_KEY_RIGHT)
-    {sx += 0.50f;
-        // sx= (GLfloat)((const int)sx % 360);
-        // sy = (GLfloat)((const int)sy % 360);
+    {
+        sx += 0.50f;
         glutPostRedisplay();}
 }
 
 
 void draw()
 {
+    //清除已经存在的画面
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     if(lflag)
@@ -116,7 +116,7 @@ void draw()
     glPushMatrix();
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT,GL_AMBIENT);
-    glColor4f(0.05,0.2,0.15,0.0);
+    glColor4f(0.5,0.5,0.5,0.0);
     glTranslatef(0,-20,0);
     glScalef(150,1,150);
     glCallList(drawcube);
@@ -150,7 +150,7 @@ void draw()
     glPushMatrix();
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT,GL_AMBIENT);
-    glColor4f(1.0,0.05,0.0,0.0);
+    glColor4f(0.82,0.41,0.11,0.0);
     glTranslatef(20,-10,-20);
     glScalef(1,20,1);
     glCallList(drawcube);
@@ -160,7 +160,7 @@ void draw()
     glPushMatrix();
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT,GL_AMBIENT);
-    glColor4f(1.0,0.05,0.0,0.0);
+    glColor4f(0.82,0.41,0.11,0.0);
     glTranslatef(-20,-10,-20);
     glScalef(1,20,1);
     glCallList(drawcube);
@@ -170,7 +170,7 @@ void draw()
     glPushMatrix();
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT,GL_AMBIENT);
-    glColor4f(1.0,0.05,0.0,0.0);
+    glColor4f(0.82,0.41,0.11,0.0);
     glTranslatef(-20,-10,20);
     glScalef(1,20,1);
     glCallList(drawcube);
@@ -179,7 +179,7 @@ void draw()
     glPushMatrix();
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT,GL_AMBIENT);
-    glColor4f(1.0,0.05,0.0,0.0);
+    glColor4f(0.82,0.41,0.11,0.0);
     glTranslatef(20,-10,20);
     glScalef(1,20,1);
     glCallList(drawcube);
@@ -190,12 +190,11 @@ void draw()
     glPushMatrix();
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT,GL_AMBIENT);
-    glColor4f(0.1,1.0,0.1,0.0);
+    glColor4f(0.5,0.5,0.5,0.0);
     glScalef(50,1,50);
     glCallList(drawcube);
     glColor4f(0.39,0.30,0.1,0.0);
     glutWireCube(1);
-    // glFlush();
     glDisable(GL_COLOR_MATERIAL);
     glPopMatrix();
     //绘制两边台阶；
@@ -249,6 +248,7 @@ void draw()
     
     glDisable(GL_COLOR_MATERIAL);
     glPopMatrix();
+    
     //桌面上摆放物品，茶壶一只，鸡蛋一个
     glPushMatrix();//茶壶
     glEnable(GL_COLOR_MATERIAL);
@@ -260,9 +260,6 @@ void draw()
     
     glDisable(GL_COLOR_MATERIAL);
     glPopMatrix();
-    
-    //glEnable(GL_BLEND);
-    //glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     
     glPushMatrix();//鸡蛋
     glEnable(GL_COLOR_MATERIAL);
@@ -285,18 +282,6 @@ void draw()
     glDisable(GL_COLOR_MATERIAL);
     glPopMatrix();
     
-    glPushMatrix();//圆环一个
-    glEnable(GL_COLOR_MATERIAL);
-    glColorMaterial(GL_FRONT,GL_AMBIENT);
-    glColor4f(0.90,0.01,0.95,0.8);
-    glRotatef(1,0,0,45);
-    glTranslatef(-35,-13,35);
-    glutSolidTorus(1,6,20,20);
-    glDisable(GL_COLOR_MATERIAL);
-    glPopMatrix();
-    
-    
-    
     GLUquadricObj *pObj;
     glPushMatrix();//第一个杯子  左边
     pObj = gluNewQuadric();
@@ -317,7 +302,6 @@ void draw()
     glColor4f(0.21,0.21,0.21,0.0);
     
     pObj= gluNewQuadric();
-    //gluQuadricDrawStyle(pObj3,GLU_LINE);
     glTranslatef(-8,1,8);
     glRotatef(90,1,0,0);
     gluDisk(pObj, 0.50f,  3.0f, 10, 10);
@@ -358,7 +342,6 @@ int main(int argc, char *argv[])
     init();
     glutReshapeFunc(reshape);
     glutSpecialFunc(SpecialKeys);
-    // glutMouseFunc(mouse);
     glutDisplayFunc(draw);
     glutMainLoop();
     
