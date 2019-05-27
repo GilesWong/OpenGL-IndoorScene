@@ -203,13 +203,40 @@ void draw()
     glColorMaterial(GL_FRONT,GL_AMBIENT);
     glColor4f(0.51,0.40,0.1,0.0);
     glTranslatef(-30,-12,0);
-    glScalef(10,4,50);
+    glScalef(10,4,60);
     glCallList(drawcube);
     glColorMaterial(GL_FRONT,GL_AMBIENT);
     glColor4f(0.1,0.50,0.51,0.0);
     glutWireCube(1);
     glDisable(GL_COLOR_MATERIAL);
     glPopMatrix();
+    
+    glPushMatrix();//左边第二级台阶
+    glEnable(GL_COLOR_MATERIAL);
+    glColorMaterial(GL_FRONT,GL_AMBIENT);
+    glColor4f(0.51,0.40,0.1,0.0);
+    glTranslatef(-32.5,-8,3);
+    glScalef(5,4,50);
+    glCallList(drawcube);
+    glColorMaterial(GL_FRONT,GL_AMBIENT);
+    glColor4f(0.1,0.50,0.51,0.0);
+    glutWireCube(1);
+    glDisable(GL_COLOR_MATERIAL);
+    glPopMatrix();
+    
+    glPushMatrix();//左边扶手
+    glEnable(GL_COLOR_MATERIAL);
+    glColorMaterial(GL_FRONT,GL_AMBIENT);
+    glColor4f(0.51,0.40,0.1,0.0);
+    glTranslatef(-30,-8,30);
+    glScalef(10,4,3);
+    glCallList(drawcube);
+    glColorMaterial(GL_FRONT,GL_AMBIENT);
+    glColor4f(0.1,0.50,0.51,0.0);
+    glutWireCube(1);
+    glDisable(GL_COLOR_MATERIAL);
+    glPopMatrix();
+    
     glPushMatrix();// 右边第一级台阶
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT,GL_AMBIENT);
@@ -223,18 +250,6 @@ void draw()
     glDisable(GL_COLOR_MATERIAL);
     glPopMatrix();
     
-    glPushMatrix();//左边第二级台阶
-    glEnable(GL_COLOR_MATERIAL);
-    glColorMaterial(GL_FRONT,GL_AMBIENT);
-    glColor4f(0.51,0.40,0.1,0.0);
-    glTranslatef(-32.5,-8,0);
-    glScalef(5,4,50);
-    glCallList(drawcube);
-    glColorMaterial(GL_FRONT,GL_AMBIENT);
-    glColor4f(0.1,0.50,0.51,0.0);
-    glutWireCube(1);
-    glDisable(GL_COLOR_MATERIAL);
-    glPopMatrix();
     glPushMatrix();//右边第二级台阶
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT,GL_AMBIENT);
